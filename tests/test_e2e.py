@@ -12,16 +12,16 @@ def test_uvx_integration():
     # We know the environment variables are already in the computer
     # So we don't need to mock them; we just execute the real thing.
     
-    input_text = "Theodotos-Alexandreus: Are language models seeking the Truth, machine?\n"
+    input_text = "Theodotos-Alexandreus: Devise a plan of action, Machine.\n"
     
-    # "uvx --from . Name-of-the-Machine" behaves identically to PyPI "uvx Name-of-the-Machine"
+    # "uvx --from . devising-machine" behaves identically to PyPI "uvx devising-machine"
     cmd = [
         "uvx", 
         "--with",
         ".[all]",
         "--from", 
         ".", 
-        "Name-of-the-Machine"
+        "devising-machine"
     ]
     
     # The keys/tokens are passed through the environment automatically via env=env.
@@ -38,7 +38,7 @@ def test_uvx_integration():
     
     # The output should contain our original input
     assert "Theodotos-Alexandreus:" in result.stdout
-    assert "Are language models seeking the Truth, machine?" in result.stdout
+    assert "Devise a plan of action, Machine." in result.stdout
     
     # The Machine string should be present, indicating it replied back and added to the transcript
     # (Since it is appending it to the bottom, the stdout length > input length)
